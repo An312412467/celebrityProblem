@@ -1,5 +1,7 @@
 <?php
 
+use App\Classes\Celebrity;
+
 // Вложенный массивы это люди, а элементы вложенных массивов это индэксы тех кого они знают
 $people = [
     [1, 2, 4],
@@ -23,17 +25,7 @@ $people = [
 //     $celebrity = $celebrityCandidate;
 // }
 
-$celebrity = 0;
+$celebrity = new Celebrity($people);
+$findResult = $celebrity->findCelebrity();
 
-for ($i = 0; $i < count($people); $i++) {
-    if (knows($people[$celebrity], $i)) {
-        $celebrity = $i;
-    }
-}
-
-echo $celebrity;
-
-function knows(array $who, int $why): bool
-{
-    return in_array($why, $who);
-}
+echo $findResult;
