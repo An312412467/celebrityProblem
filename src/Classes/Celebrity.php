@@ -16,13 +16,13 @@ class Celebrity
         $celebrity = 0;
 
         for ($i = 0; $i < count($this->people); $i++) {
-            if ($this->knows($this->people[$celebrity], $i)) {
+            if ($this->knows($celebrity, $i)) {
                 $celebrity = $i;
             }
         }
 
         for ($i = 0; $i < count($this->people); $i++) {
-            if ($i != $celebrity && ($this->knows($this->people[$celebrity], $i) || !$this->knows($this->people[$i], $celebrity))) {
+            if ($i != $celebrity && ($this->knows($celebrity, $i) || !$this->knows($i, $celebrity))) {
                 return -1;
             }
         }
@@ -30,8 +30,8 @@ class Celebrity
         return $celebrity;
     }
 
-    private function knows(array $who, int $why): bool
+    private function knows(int $who, int $whom): bool
     {
-        return in_array($why, $who);
+        return in_array($whom, $this->people[$who]);
     }
 }

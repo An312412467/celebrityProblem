@@ -1,5 +1,7 @@
 <?php
 
+require_once 'vendor/autoload.php';
+
 use App\Classes\Celebrity;
 
 // Вложенный массивы это люди, а элементы вложенных массивов это индэксы тех кого они знают
